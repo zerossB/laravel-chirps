@@ -1,8 +1,13 @@
 <script setup>
+import Chirp from '@/Components/Chirp.vue';
 import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, useForm } from '@inertiajs/vue3';
+
+defineProps([
+    'chirps'
+]);
 
 const form = useForm({
     message: ''
@@ -21,6 +26,10 @@ const form = useForm({
                 <InputError :message="form.errors.message" />
                 <PrimaryButton class="mt-4">Chirp</PrimaryButton>
             </form>
+
+            <div class="mt-6 bg-white shadow-sm rouded-lg divide-y">
+                <Chirp v-for="chirp in chirps" :key="chirp.id" :chirp="chirp" />
+            </div>
         </div>
     </AuthenticatedLayout>
 </template>
