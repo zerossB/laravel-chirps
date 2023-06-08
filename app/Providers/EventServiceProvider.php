@@ -21,7 +21,7 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         ChirpCreated::class => [
-            SendChirpCreateNotifications::class
+            SendChirpCreateNotifications::class,
         ],
     ];
 
